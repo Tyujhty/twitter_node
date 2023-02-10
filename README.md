@@ -1,5 +1,7 @@
 # TWITTER COPY with Node Js
 
+[![version](https://img.shields.io/badge/version-1.0.0-yellow.svg)](https://semver.org)
+
 ## Description
 
 Ceci est une copie de l'application Twitter, en Nodejs
