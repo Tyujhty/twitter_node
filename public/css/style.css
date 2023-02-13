@@ -1,0 +1,17 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.topbar {
+    box-shadow: var(--box-shadow);
+}
+
+.navbar-toggler {
+    margin-right: 1.5rem;
+}
