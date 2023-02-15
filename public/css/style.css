@@ -8,10 +8,56 @@
     --box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
+/* Topbar */
 .topbar {
     box-shadow: var(--box-shadow);
 }
 
 .navbar-toggler {
     margin-right: 1.5rem;
+}
+
+.btn-tweet {
+    border-radius: 35px;
+    padding: 10px 25px;
+}
+
+/* Home page */
+.container-main{
+    display: flex;
+    width: 80%;
+}
+
+.content {
+    max-width: 1000px;
+    margin-top: 10px;
+}
+
+@media (max-width: 770px) {
+    .container-main {
+        flex-direction: column !important;
+        position: relative;
+        width: 100%;
+    }
+}
+
+
+/* Profil */
+.profile-container {
+    width: 30%;
+}
+
+@media (max-width: 770px) {
+    .profile-container {
+        width: 100%;
+        height: 100px;
+    }
+}
+
+
+/* Tweet container */
+@media (max-width: 770px) {
+    .tweets-container {
+        width: 100%;
+    }
 }

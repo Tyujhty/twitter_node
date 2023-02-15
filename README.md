@@ -4,7 +4,7 @@
 
 ## Description
 
-Ceci est une copie de l'application Twitter, en Nodejs
+Copie de l'application Twitter, en Nodejs
 
 ## Stack
 
