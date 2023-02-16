@@ -1,0 +1,11 @@
+form(class='card' action='/api/tweet/new' method='post')
+    .card-header Ecrire un tweet
+    .card-body
+        .form-group
+            textarea(name="content", class='form-control' placeholder="Quoi de neuf aujourd'hui ?")
+        if errors
+            ul(class='my-2')
+                each error in errors
+                    li(class='text-danger')= error
+        .w-100.d-flex.justify-content-md-end.mt-3
+            input(type="submit", value='Tweeter' class='btn btn-primary')

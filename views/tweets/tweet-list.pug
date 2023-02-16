@@ -4,5 +4,9 @@ block content
     .d-flex.flex-row.container-main.mx-auto.content
         .profile-container.container-fluid 
             include ../includes/profile.pug
-        .tweets-container.flex-fill.container-fluid 
-            h1 Tweet List
+        .tweets-container.flex-fill.container-fluid.tweets-list
+            include ../includes/tweet-form.pug
+            if tweets
+                each tweet in tweets
+                    .card.my-3
+                        .card-body= tweet.content
