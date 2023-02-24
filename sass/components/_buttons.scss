@@ -1,0 +1,23 @@
+.btn {
+    border-radius: 3px;
+    border: 1px solid white;
+    cursor: pointer;
+    padding: 10px 15px;
+    color: white;
+
+    &-primary {
+        background-color: $primary-color;
+
+        &:hover {
+            background-color: $primary-color-dark;
+        }
+    }
+
+    &-secondary {
+        background-color: $primary-color-dark;
+
+        &:hover {
+            background-color: $primary-color;
+        }
+    }
+}

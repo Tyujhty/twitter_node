@@ -1,11 +1,12 @@
 form(class='card' action='tweet/new' method='post')
-    .card-header Ecrire un tweet
-    .card-body
-        .form-group
-            textarea(name="content", class='form-control' placeholder="Quoi de neuf aujourd'hui ?")
+    .form-title 
+        h4 Post a new tweet
+    .form-body
+        .form-item
+            textarea(name="content" placeholder="What's up today ?")
         if errors
-            ul(class='my-2')
+            ul
                 each error in errors
                     li(class='text-danger')= error
-        .w-100.d-flex.justify-content-md-end.mt-3
+        .form-item
             input(type="submit", value='Tweeter' class='btn btn-primary')

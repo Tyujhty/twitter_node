@@ -1,0 +1,16 @@
+.profile-container {
+ 
+    background-color: $secondary-color-dark;
+    height: 100vh;
+    width: 20%;
+    padding: 2.5rem;
+    
+    @include xs {
+        bottom: 0;
+        height: 10vh;
+        left: 0;
+        position: fixed;
+        width: 100%;
+    }
+
+}

@@ -1,0 +1,97 @@
+.tweets-container {
+    @include flex();
+
+    width: 80%;
+
+    @include xs {
+        width: 100%;
+    }
+
+    .tweets-list {
+        @include flex($direction: column);
+
+        width: 80%;
+
+        form {
+            border: 1px solid $text-color;
+            border-radius: 5px;
+            margin-top: 2rem;
+            width: 50%;
+            padding: 1rem;
+
+            @include xs {
+                width: 100%;
+            }
+
+            .form-title h4 {
+                color: $text-color;
+            }
+
+            .form-body {
+                width: 100%;
+
+                .form-item {
+                    width: 100%;
+
+                    textarea {
+                        border: none;
+                        width: 100%;
+                        background-color: transparent;
+                        padding: 10px 15px;
+                        text-align: start;
+                        resize: none;
+                        outline: none;
+                    }
+
+                    &:last-child {
+                        text-align: right;
+                    }
+                }
+            }
+        }
+
+        .tweet-card {
+            width: 50%;
+            border: 1px solid $text-color;
+            margin-top: 2rem;
+            padding: 1.5rem;
+
+            @include xs {
+                width: 100%;
+            }
+
+            &-author {
+
+                @include flex($justify: flex-start);
+
+                img {
+                    width: 2.5rem;
+                }
+
+                p {
+                    margin-left: 1rem;
+                }
+            }
+
+            &-body {
+                padding: 1rem;
+            }
+
+            &-actions {
+                @include flex($justify: space-around);
+
+                border-top: 1px solid $bg;
+                margin-top: 2rem;
+
+                i {
+                    cursor: pointer;
+                    font-size: 1.5rem;
+                    line-height: 1.5rem;
+                    margin-top: 1.5rem;
+                }
+            }
+        }
+
+
+    }
+}

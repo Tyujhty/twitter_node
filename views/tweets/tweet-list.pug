@@ -1,12 +1,21 @@
 extends ../layout.pug
 
 block content 
-    .d-flex.flex-row.container-main.mx-auto.content
-        .profile-container.container-fluid.mx-5.p-4
+    .content
+        .profile-container
             include ../includes/profile.pug
-        .tweets-container.flex-fill.container-fluid.tweets-list
-            include ../includes/tweet-form.pug
-            if tweets
-                each tweet in tweets
-                    .card.my-3
-                        .card-body= tweet.content
+        .tweets-container
+            .tweets-list
+                include ../includes/tweet-form.pug
+                if tweets
+                    each tweet in tweets
+                        .tweet-card
+                            .tweet-card-author
+                                img(src="/images/default-profile.png", alt="alt")
+                                p Fanny Baquey
+                            .tweet-card-body= tweet.content
+                            .tweet-card-actions
+                                i.fa-regular.fa-comment 
+                                i.fa-regular.fa-heart
+                                i.fa-regular.fa-share-from-square 
+
