@@ -1,0 +1,16 @@
+.tweet-card
+    .tweet-card-author
+        .tweet-card-author-data
+            img(src="/images/default-profile.png", alt="alt")
+            p Fanny Baquey
+        .tweet-card-author-data
+            a(href=`/tweet/edit/${tweet._id}`)
+                i.fa-regular.fa-pen-to-square
+            a(href=`/tweet/delete/${tweet._id}`)
+                i.fa-regular.fa-trash-can
+        
+    .tweet-card-body= tweet.content
+    .tweet-card-actions
+        i.fa-regular.fa-comment 
+        i.fa-regular.fa-heart
+        i.fa-regular.fa-share-from-square 

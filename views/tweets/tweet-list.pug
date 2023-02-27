@@ -9,13 +9,4 @@ block content
                 include ../includes/tweet-form.pug
                 if tweets
                     each tweet in tweets
-                        .tweet-card
-                            .tweet-card-author
-                                img(src="/images/default-profile.png", alt="alt")
-                                p Fanny Baquey
-                            .tweet-card-body= tweet.content
-                            .tweet-card-actions
-                                i.fa-regular.fa-comment 
-                                i.fa-regular.fa-heart
-                                i.fa-regular.fa-share-from-square 
-
+                        include ../includes/tweet-card.pug

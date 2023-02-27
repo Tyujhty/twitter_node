@@ -37,6 +37,62 @@ a {
   background-color: #00ACEE;
 }
 
+.tweet-card {
+  width: 50%;
+  border: 1px solid #333;
+  margin-top: 2rem;
+  padding: 1.5rem;
+}
+@media (max-width: 480px) {
+  .tweet-card {
+    width: 100%;
+  }
+}
+.tweet-card-author {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.tweet-card-author-data {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.tweet-card-author-data img {
+  width: 2.5rem;
+}
+.tweet-card-author-data p {
+  margin-left: 1rem;
+}
+.tweet-card-author-action a {
+  color: #333;
+}
+.tweet-card-author-action a i {
+  cursor: pointer;
+}
+.tweet-card-body {
+  padding: 1rem;
+}
+.tweet-card-actions {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  border-top: 1px solid #eee;
+  margin-top: 2rem;
+}
+.tweet-card-actions i {
+  cursor: pointer;
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  margin-top: 1.5rem;
+}
+
 .top-bar {
   align-items: center;
   display: flex;
@@ -62,9 +118,14 @@ a {
 
 .profile-container {
   background-color: #bec2c4;
-  height: 100vh;
+  height: 70%;
   width: 20%;
   padding: 2.5rem;
+  position: fixed;
+  top: 20%;
+  left: 5%;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  border-radius: 10px;
 }
 @media (max-width: 480px) {
   .profile-container {
@@ -129,48 +190,6 @@ a {
 }
 .tweets-container .tweets-list form .form-body .form-item:last-child {
   text-align: right;
-}
-.tweets-container .tweets-list .tweet-card {
-  width: 50%;
-  border: 1px solid #333;
-  margin-top: 2rem;
-  padding: 1.5rem;
-}
-@media (max-width: 480px) {
-  .tweets-container .tweets-list .tweet-card {
-    width: 100%;
-  }
-}
-.tweets-container .tweets-list .tweet-card-author {
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-}
-.tweets-container .tweets-list .tweet-card-author img {
-  width: 2.5rem;
-}
-.tweets-container .tweets-list .tweet-card-author p {
-  margin-left: 1rem;
-}
-.tweets-container .tweets-list .tweet-card-body {
-  padding: 1rem;
-}
-.tweets-container .tweets-list .tweet-card-actions {
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  border-top: 1px solid #eee;
-  margin-top: 2rem;
-}
-.tweets-container .tweets-list .tweet-card-actions i {
-  cursor: pointer;
-  font-size: 1.5rem;
-  line-height: 1.5rem;
-  margin-top: 1.5rem;
 }
 
 .content {
