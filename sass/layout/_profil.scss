@@ -5,10 +5,8 @@
     width: 20%;
     padding: 2.5rem;
     position: fixed;
-    top: 20%;
     left: 5%;
     box-shadow: $box-shadow;
-    border-radius: 10px;
     
     @include xs {
         bottom: 0;
