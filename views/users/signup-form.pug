@@ -1,0 +1,25 @@
+extends ../layout.pug
+
+block content
+    section
+        .content-box 
+            .form-box
+                h2 Sign in
+                form(action="/user/signup" method='post')
+                    .input-box 
+                        input#username(type="text", name="username" placeholder="Username")
+                    .input-box 
+                        input#firstname(type="text", name="firstname" placeholder="Firstname")
+                    .input-box 
+                        input#lastname(type="text", name="lastname" placeholder="Lastname")
+                    .input-box 
+                        input#email(type="email", name="email" placeholder="Email")
+                    .input-box 
+                        input#password(type="password", name="password" placeholder="Password")
+                    .input-box 
+                        input(type="submit", value='Sign in' class='btn btn-primary')
+                    if errors 
+                        ul  
+                            each error in errors 
+                                li(class="text-danger")=error
+                    

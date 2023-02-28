@@ -1,0 +1,13 @@
+form(class='card' action='tweet/edit' method='get')
+    .form-title 
+        h4 Edit your tweet
+    .form-body
+        .form-item
+            textarea(name="content" value=`test`)
+        if errors
+            ul
+                each error in errors
+                    li(class='text-danger')= error
+        .form-item
+            input(type="submit", value='Save' class='btn btn-primary')
+            input(type="submit", value='Cancel' class='btn btn-secondary')

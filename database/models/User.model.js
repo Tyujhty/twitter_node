@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const schema = mongoose.Schema
+const bcrypt = require('bcrypt')
 
 const userSchema = schema({
     username: {type: String, require: true},
@@ -12,6 +13,21 @@ const userSchema = schema({
 }, {
     timestamps: true
 })
+
+userSchema.statics.hashPassword = async (password) => {
+    try {
+        const salt = await bcrypt.genSalt(10) //crypter le mot de passe
+        return bcrypt.hash(password, salt)
+
+    } catch (error) {
+        throw error
+    }
+}
+
+//comparer le mot de passe
+userSchema.statics.comparePassword = function(password) {
+    return bcrypt.compare(password, this.local.password)
+}
 
 const User = mongoose.model('user', userSchema)
 

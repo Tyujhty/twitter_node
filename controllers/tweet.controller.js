@@ -1,5 +1,5 @@
-const { findByIdAndUpdate } = require("../database/models/Tweet.model")
-const { createNewTweet, findAllTweets, findTweetAndDelete } = require("../queries/tweet.queries")
+
+const { createNewTweet, findAllTweets, findTweetAndDelete, findTweetAndUpdate } = require("../queries/tweet.queries")
 
 exports.createTweet = async (req, res, next) => {
     try {
@@ -20,6 +20,7 @@ exports.tweetList = async (req, res, next) => {
     try {
         const tweets = await findAllTweets()
         res.render('tweets/tweet-list', { tweets })
+
     } catch (error) {
         next(error)
     }
@@ -39,9 +40,10 @@ exports.deleteTweet = async (req, res, next) => {
 exports.editTweet = async(req, res, next) => {
     try {
         const tweetId = req.params.tweetId
+        console.log(tweetId)
 
-        await findByIdAndUpdate(tweetId)
-        res.redirect('/')
+        await findTweetAndUpdate(tweetId)
+        res.render('tweets/tweet-list', {tweetId})
 
     } catch (error) {
         next(error)

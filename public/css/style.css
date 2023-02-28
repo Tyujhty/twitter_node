@@ -201,4 +201,32 @@ a {
   height: 85vh;
 }
 
+section {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 50px;
+}
+section .content-box {
+  width: 20%;
+  border: 1px solid #333;
+  border-radius: 5px;
+  padding: 30px;
+}
+section .content-box .form-box {
+  width: 100%;
+}
+section .content-box .form-box .input-box {
+  margin-top: 15px;
+}
+section .content-box .form-box .input-box input {
+  border: 1px solid #333;
+  border-radius: 5px;
+  outline: none;
+  padding: 10px 15px;
+  width: 100%;
+}
+
 /*# sourceMappingURL=style.css.map */
