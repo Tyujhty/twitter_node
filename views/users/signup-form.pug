@@ -18,6 +18,9 @@ block content
                         input#password(type="password", name="password" placeholder="Password")
                     .input-box 
                         input(type="submit", value='Sign in' class='btn btn-primary')
+                    .input-box
+                        p You have an account, already ?
+                            a(href="/auth/signin/form") Log in ?   
                     if errors 
                         ul  
                             each error in errors 

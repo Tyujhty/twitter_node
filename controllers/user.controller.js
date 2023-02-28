@@ -13,6 +13,10 @@ exports.signup = async (req, res, next) => {
         await createNewUser(body)
         res.redirect('/')
     } catch (error) {
-        next(error)
+        res.render('users/signup-form', {
+            errors: [error.message],
+            isAuthenticated: req.isAuthenticated(),
+            currentUser: req.user
+        })
     }
 }

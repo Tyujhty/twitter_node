@@ -25,7 +25,7 @@ userSchema.statics.hashPassword = async (password) => {
 }
 
 //comparer le mot de passe
-userSchema.statics.comparePassword = function(password) {
+userSchema.methods.comparePassword = function(password) {
     return bcrypt.compare(password, this.local.password)
 }
 

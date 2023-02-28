@@ -3,7 +3,11 @@ section {
 
     padding: 50px;
 
+    @include xs {
+        padding: 15px;
+    }
     .content-box {
+
         width: 20%;
         border: 1px solid $text-color;
         border-radius: 5px;
@@ -24,6 +28,10 @@ section {
                     width: 100%;
                 }
             }
+        }
+
+        @include xs {
+            width: 100%;
         }
     }
 }

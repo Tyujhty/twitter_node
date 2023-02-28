@@ -12,7 +12,7 @@ exports.createNewUser = async (user) => {
             lastname: user.lastname,
             local: {
                 email: user.email,
-                password: user.hashedPassword
+                password: hashedPassword
             }
         })
     
@@ -24,9 +24,9 @@ exports.createNewUser = async (user) => {
 }
 
 exports.findUserByEmail = (email) => {
-    return findOne({'local.email': email}).exec() //passer l'email de la base pour retourner une promesse
+    return User.findOne({'local.email': email}).exec() //passer l'email de la base pour retourner une promesse
 }
 
 exports.findUserById = (id) => {
-    return findById(id).exec()
+    return User.findById(id).exec()
 }

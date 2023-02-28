@@ -1,0 +1,21 @@
+extends ../layout.pug
+
+block content
+    section
+        .content-box 
+            .form-box
+                h2 Sign in
+                form(action="/auth/signin" method='post')
+                    .input-box 
+                        input#email(type="email", name="email" placeholder="Email")
+                    .input-box 
+                        input#password(type="password", name="password" placeholder="Password")
+                    .input-box 
+                        input(type="submit", value='Sign in' class='btn btn-primary')
+                    .input-box
+                        p You don't have an account ?
+                            a(href="/user/signup/form") Sign in ?    
+                    if errors 
+                        ul  
+                            each error in errors 
+                                li(class="text-danger")=error

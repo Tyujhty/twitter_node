@@ -1,1 +1,7 @@
-p Profil
+if isAuthenticated 
+    .profile
+        .profile-img
+            img(src="https://randomuser.me/api/portraits/women/71.jpg", alt="alt")
+        .profile-infos
+            h3 @#{currentUser.username}
+            p #{currentUser.firstname} #{currentUser.lastname}

@@ -1,4 +1,6 @@
 .profile-container {
+
+    @include flex($align: flex-start);
  
     background-color: $secondary-color-dark;
     height: 70%;
@@ -7,13 +9,42 @@
     position: fixed;
     left: 5%;
     box-shadow: $box-shadow;
+    border-radius: 10px;
     
     @include xs {
+
+        @include flex($justify: flex-start, $align: flex-start);
         bottom: 0;
         height: 10vh;
         left: 0;
         position: fixed;
         width: 100%;
+        padding: 0.5rem;
+        border-radius: 0;
     }
 
+    .profile {
+        @include flex($justify: flex-start, $align: flex-start);
+        
+        &-img {
+            img {
+                width: 6rem;
+                height: 6rem;
+                margin: 5px;
+                border: 3px solid $primary-color;
+                border-radius: 50%;
+    
+                @include xs {
+                    width: 3rem;
+                    height: 3rem;
+                    margin-right: 1rem;
+                }
+            }
+        }
+
+
+        @include xs {
+            @include flex()
+        }
+    }
 }

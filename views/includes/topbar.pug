@@ -2,8 +2,12 @@
     a(href="/")
         img(src="/images/logo.png", alt="Logo Twitter" height='80px')
     ul
-        li
-            a(href="/user/signup/form" class='btn btn-primary') Sign in
-        li
-            a(href="" class='btn btn-primary') Log in
+        if isAuthenticated 
+            li
+                a(class='btn btn-primary' href='/auth/signout') Log out
+        else
+            li
+                a(href="/user/signup/form" class='btn btn-primary') Sign in
+            li
+                a(href="/auth/signin/form" class='btn btn-primary') Log in
             

@@ -2,11 +2,13 @@ extends ../layout.pug
 
 block content 
     .content
-        .profile-container
-            include ../includes/profile.pug
+        if isAuthenticated
+            .profile-container
+                include ../includes/profile.pug
         .tweets-container
             .tweets-list
-                include ../includes/tweet-form.pug
+                if isAuthenticated
+                    include ../includes/tweet-form.pug
                 if tweets
                     each tweet in tweets
                         include ../includes/tweet-card.pug
