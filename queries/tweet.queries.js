@@ -6,7 +6,7 @@ exports.createNewTweet = (body) => {
 }
 
 exports.findAllTweets = () => {
-    return Tweet.find({}).exec()
+    return Tweet.find({}).populate('author').exec() //populate : pour chaque tweet on récupère les infos de l'auteur
 }
 
 exports.findTweetAndDelete = (tweetId) => {

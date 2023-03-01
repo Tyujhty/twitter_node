@@ -2,7 +2,7 @@
     .tweet-card-author
         .tweet-card-author-data
             img(src="/images/default-profile.png", alt="alt")
-            p @#{currentUser.username}
+            p @#{tweet.author.username}
         .tweet-card-author-data
             a(href=`/tweet/edit/${tweet._id}`)
                 i.fa-regular.fa-pen-to-square

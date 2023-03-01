@@ -1,3 +1,4 @@
+const { ensureAuthenticated } = require('../config/security.config')
 const { createTweet, deleteTweet, displayTweet, updateTweet } = require('../controllers/tweet.controller')
 
 
@@ -5,7 +6,7 @@ const { createTweet, deleteTweet, displayTweet, updateTweet } = require('../cont
 const router = require('express').Router()
 
 
-router.post('/new', createTweet)
+router.post('/new',ensureAuthenticated, createTweet)
 router.get('/delete/:tweetId', deleteTweet)
 router.get('/edit/:tweetId', displayTweet) //Affiche le tweet pour la modification
 router.post('/edit/:tweetId', updateTweet) // Maj du tweet
