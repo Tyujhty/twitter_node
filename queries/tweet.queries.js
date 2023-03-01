@@ -13,6 +13,10 @@ exports.findTweetAndDelete = (tweetId) => {
     return Tweet.findByIdAndDelete(tweetId).exec()
 }
 
-exports.findTweetAndUpdate = (tweetId) => {
-    return Tweet.findByIdAndUpdate(tweetId).exec()
+exports.findTweetById = (tweetId) => {
+    return Tweet.findById(tweetId).exec()
+}
+
+exports.findTweetAndUpdate = (tweetId, body) => {
+    return Tweet.findByIdAndUpdate(tweetId, {$set: body}).exec() //The $set operator replaces the value of a field with the specified value.
 }

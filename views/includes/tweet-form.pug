@@ -1,12 +1,12 @@
-form(class='card' action='tweet/new' method='post')
+form(class="card" action= tweet ? `/tweet/edit/${tweet._id}` : '/tweet/new' method="post")
     .form-title 
-        h4 Post a new tweet
+        h4= tweet ? "Edit the tweet" : " Add a new tweet"
     .form-body
         .form-item
-            textarea(name="content" placeholder="What's up today ?")
-        if errors
-            ul
+            textarea(name="content" placeholder="What's up today ?")= tweet ? tweet.content : ""
+        if errors 
+            ul 
                 each error in errors
                     li(class='text-danger')= error
         .form-item
-            input(type="submit", value='Tweeter' class='btn btn-primary')
+            input(type="submit", value= tweet ? 'Update' : 'Tweeter' class='btn btn-primary')

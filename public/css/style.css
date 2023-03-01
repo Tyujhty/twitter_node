@@ -71,6 +71,7 @@ a {
 }
 .tweet-card-author-data p {
   margin-left: 1rem;
+  font-weight: 700;
 }
 .tweet-card-author-action a {
   color: #333;
