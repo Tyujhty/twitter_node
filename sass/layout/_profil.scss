@@ -5,11 +5,12 @@
     background-color: $secondary-color-dark;
     height: 70%;
     width: 20%;
-    padding: 2.5rem;
+    padding: 1.5rem;
     position: fixed;
     left: 5%;
     box-shadow: $box-shadow;
     border-radius: 10px;
+    margin-top: 3rem;
     
     @include xs {
 
@@ -24,7 +25,7 @@
     }
 
     .profile {
-        @include flex($justify: flex-start, $align: flex-start);
+        @include flex($justify: flex-start, $align: center, $direction: column);
         
         &-img {
             img {
@@ -35,6 +36,7 @@
                 border-radius: 50%;
     
                 @include xs {
+                    @include flex($justify: space-around, $align: flex-start);
                     width: 3rem;
                     height: 3rem;
                     margin-right: 1rem;
@@ -42,9 +44,37 @@
             }
         }
 
+        &-actions {
+            margin-top: 30px;
+
+            @include xs {
+                @include flex($justify: space-around, $align: flex-start);
+                margin-top: 0
+            }
+        }
+
+        &-data {
+            @include flex();
+            
+            margin-top: 30px;
+            width: 100%;
+
+            @include xs {
+                display: none;
+            }
+
+            &-posts, &-followers, &-following {
+                @include flex($direction: column);
+                margin-right: 10px;
+
+            }
+        }
+
 
         @include xs {
-            @include flex()
+            @include flex($justify: space-between);
+
+            width: 100%;
         }
     }
 }

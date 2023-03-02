@@ -1,13 +1,15 @@
 .tweet-card
     .tweet-card-author
         .tweet-card-author-data
-            img(src="/images/default-profile.png", alt="alt")
+            img(src=tweet.author.avatar, alt="alt")
             p @#{tweet.author.username}
-        .tweet-card-author-data
-            a(href=`/tweet/edit/${tweet._id}`)
-                i.fa-regular.fa-pen-to-square
-            a(href=`/tweet/delete/${tweet._id}`)
-                i.fa-regular.fa-trash-can
+        if currentUser
+            if tweet.author._id.toString() == currentUser._id.toString()
+                .tweet-card-author-data
+                    a(href=`/tweet/edit/${tweet._id}`)
+                        i.fa-regular.fa-pen-to-square
+                    a(href=`/tweet/delete/${tweet._id}`)
+                        i.fa-regular.fa-trash-can
         
     .tweet-card-body= tweet.content
     .tweet-card-actions

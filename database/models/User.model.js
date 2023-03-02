@@ -3,12 +3,16 @@ const schema = mongoose.Schema
 const bcrypt = require('bcrypt')
 
 const userSchema = schema({
-    username: {type: String, require: true},
+    username: {type: String, require: true, unique: true},
     firstname: {type: String, require: true},
     lastname: {type: String, require: true},
     local: {
-        email: {type: String, require: true},
+        email: {type: String, require: true, unique: true},
         password: {type: String, require: true}
+    },
+    avatar: {
+        type: String,
+        default: '/images/default-profile.png' //img par défault à l'inscription
     }
 }, {
     timestamps: true

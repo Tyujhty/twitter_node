@@ -49,9 +49,12 @@ exports.deleteTweet = async (req, res, next) => {
 exports.displayTweet = async(req, res, next) => {
     try {
         const tweetId = req.params.tweetId
-        const tweet = await findTweetById(tweetId) 
-        res.render('tweets/tweet-edit', { tweet, isAuthenticated: req.isAuthenticated, currentUser: req.user })
-
+        const tweet = await findTweetById(tweetId)
+        if (tweet.author._id.toString() === req.user._id.toString()) {
+            res.render('tweets/tweet-edit', { tweet, isAuthenticated: req.isAuthenticated, currentUser: req.user })
+        }else {
+            res.redirect('/')
+        }
     } catch (error) {
         next(error)
     }

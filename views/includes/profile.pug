@@ -1,7 +1,27 @@
-if isAuthenticated 
+if isAuthenticated
+    script(src="/js/upload-image.js") 
     .profile
         .profile-img
-            img(src="https://randomuser.me/api/portraits/women/71.jpg", alt="alt")
+            form(
+                id="form-container"
+                action="/user/update/image"
+                method="post"
+                enctype="multipart/form-data"
+            )
+                input(type="file", name="avatar" id="avatar" style="display: none")
+                img#profile-image(src=currentUser.avatar, alt="alt")
         .profile-infos
             h3 @#{currentUser.username}
             p #{currentUser.firstname} #{currentUser.lastname}
+        .profile-actions
+            a(href="#" class="btn btn-primary") Follow
+        .profile-data
+            .profile-data-posts
+                p Posts
+                p 5
+            .profile-data-followers
+                p Followers
+                p 5
+            .profile-data-following
+                p Following
+                p 5

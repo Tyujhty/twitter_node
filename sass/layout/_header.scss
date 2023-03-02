@@ -14,5 +14,9 @@
         li {
             margin-left: 10px;
         }
+
+        @include xs {
+            width: 50%;
+        }
     }
 }

@@ -1,5 +1,5 @@
 .tweet-card {
-    width: 50%;
+    width: 60%;
     border: 1px solid $text-color;
     margin-top: 2rem;
     padding: 1.5rem;
@@ -18,11 +18,17 @@
 
             img {
                 width: 2.5rem;
+                border-radius: 50%;
+                border: 2px solid $primary-color;
             }
     
             p {
                 margin-left: 1rem;
                 font-weight: 700;
+            }
+
+            i {
+                margin: 0 0.3rem;
             }
         }
 

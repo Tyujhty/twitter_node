@@ -68,8 +68,6 @@ a {
 }
 .tweet-card-author-data img {
   width: 2.5rem;
-  border-radius: 50%;
-  border: 2px solid #00ACEE;
 }
 .tweet-card-author-data p {
   margin-left: 1rem;
@@ -337,6 +335,4 @@ section .content-box .form-box .input-box input {
   section .content-box {
     width: 100%;
   }
-}
-
-/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */
