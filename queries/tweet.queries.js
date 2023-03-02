@@ -20,3 +20,11 @@ exports.findTweetById = (tweetId) => {
 exports.findTweetAndUpdate = (tweetId, body) => {
     return Tweet.findByIdAndUpdate(tweetId, {$set: body}).exec() //The $set operator replaces the value of a field with the specified value.
 }
+
+exports.getCurrentUserTweetsWithFollowing = (user) => {
+    return Tweet.find({author: {$in: [...user.followings, user._id]}}).populate('author').exec() //destructuring data 
+}
+
+exports.findTweetsFromUserName = (authorId) => {
+    return Tweet.find( {author: authorId} ).populate('author').exec()
+}

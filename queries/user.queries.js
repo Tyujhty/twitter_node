@@ -30,3 +30,7 @@ exports.findUserByEmail = (email) => {
 exports.findUserById = (id) => {
     return User.findById(id).exec()
 }
+
+exports.findUserByUsername = (username) => {
+    return User.findOne({username: username}).exec()
+}

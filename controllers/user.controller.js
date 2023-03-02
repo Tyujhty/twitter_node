@@ -1,6 +1,7 @@
-const { createNewUser } = require("../queries/user.queries")
+const { createNewUser, findUserByUsername } = require("../queries/user.queries")
 const multer = require('multer')
 const path = require('path') //permet de stocker une image uploadée dans un chemin précis et créer un chemin entre le user <=> avatar
+const { findTweetsFromUserName } = require("../queries/tweet.queries")
 
 const upload = multer({
     storage: multer.diskStorage({
@@ -47,3 +48,15 @@ exports.uploadImage = [
         next(error)
     }
 }]
+
+exports.displayProfile = async (req, res, next) => {
+    try {
+        const username = req.params.username
+        const user = await findUserByUsername(username) //je trouve l'auteur
+        const tweets = await findTweetsFromUserName(user._id) // je trouve tous les tweet de l'auteur
+
+        res.render('users/profile-show', {tweets, user, isAuthenticated: req.isAuthenticated(), currentUser: req.user })
+    } catch (error) {
+        next(error)
+    }
+}

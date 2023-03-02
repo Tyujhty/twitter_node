@@ -13,7 +13,9 @@ const userSchema = schema({
     avatar: {
         type: String,
         default: '/images/default-profile.png' //img par défault à l'inscription
-    }
+    },
+    followings: {type: [schema.Types.ObjectId], ref: 'user'},
+    followers: {type: [schema.Types.ObjectId], ref: 'user'}
 }, {
     timestamps: true
 })

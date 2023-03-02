@@ -2,7 +2,8 @@
     .tweet-card-author
         .tweet-card-author-data
             img(src=tweet.author.avatar, alt="alt")
-            p @#{tweet.author.username}
+            a(href=`/user/${tweet.author.username}`)
+                p @#{tweet.author.username}
         if currentUser
             if tweet.author._id.toString() == currentUser._id.toString()
                 .tweet-card-author-data

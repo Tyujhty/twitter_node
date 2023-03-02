@@ -1,0 +1,28 @@
+extends ../layout.pug
+
+block content
+    .user-content
+        .user-profile
+            .user-profile-img
+                img#user-profile-image(src=user.avatar, alt="alt")
+            .user-profile-infos
+                h3 @#{user.username}
+                p #{user.firstname} #{user.lastname}
+            .user-profile-actions
+                a(href="#" class="btn btn-primary") Follow
+            .user-profile-data
+                .user-profile-data-posts
+                    p Posts
+                    p= tweets.length
+                .user-profile-data-followers
+                    p Followers
+                    p 5
+                .user-profile-data-following
+                    p Following
+                    p 5
+    .tweets-user-container
+        .tweets-user-list
+            if isAuthenticated
+            if tweets
+                each tweet in tweets
+                    include ../includes/tweet-card.pug
