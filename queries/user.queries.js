@@ -44,3 +44,19 @@ exports.findUserByQuerySearch = (search) => {
 exports.findUserAndDelete = (usernameId) => {
     return User.findByIdAndDelete(usernameId).exec()
 }
+
+exports.addUserToCurrentFollowingList = async (currentUser,userId) => {
+    currentUser.followings = [...currentUser.followings, userId]
+    const user= await this.findUserById(userId)
+    user.followers = [...user.followers, currentUser._id]
+    user.save()
+    return currentUser.save()
+}
+
+exports.removeUserToCurrentUserFollowingList = async (currentUser,userId) => {
+    currentUser.followings = currentUser.followings.filter(objId => objId.toString() !== userId)
+    const user= await this.findUserById(userId)
+    user.followers = currentUser.followers.filter(objId => objId.toString() !== userId)
+    user.save()
+    return currentUser.save()
+}

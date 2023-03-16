@@ -1,4 +1,4 @@
-const { createNewUser, findUserByUsername, findUserByQuerySearch, findUserAndDelete } = require("../queries/user.queries")
+const { createNewUser, findUserByUsername, findUserByQuerySearch, findUserAndDelete, addUserToCurrentFollowingList, removeUserToCurrentUserFollowingList, findUserById } = require("../queries/user.queries")
 const multer = require('multer')
 const path = require('path') //permet de stocker une image uploadée dans un chemin précis et créer un chemin entre le user <=> avatar
 const { findTweetsFromUserName, findTweetAndDelete } = require("../queries/tweet.queries")
@@ -80,6 +80,33 @@ exports.deleteUser = async(req, res, next) => {
         await findTweetAndDelete(tweets)
         res.redirect('/')
         
+    } catch (error) {
+        next(error)
+    }
+}
+
+exports.followUser = async(req, res, next) => {
+    try {
+        const userId = req.params.userId
+        const [_, user] = await Promise.all([
+            addUserToCurrentFollowingList(req.user, userId),
+            findUserById(userId)
+        ])
+        res.redirect(`/user/${user.username}`)
+
+    } catch (error) {
+        next(error)
+    }
+}
+exports.unfollowUser = async(req, res, next) => {
+    try {
+        const userId = req.params.userId
+        const [_, user] = await Promise.all ([
+            removeUserToCurrentUserFollowingList(req.user, userId),
+            findUserById(userId)
+        ])
+        res.redirect(`/user/${user.username}`)
+
     } catch (error) {
         next(error)
     }
