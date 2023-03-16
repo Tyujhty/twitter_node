@@ -32,16 +32,16 @@ exports.createTweet = async (req, res, next) => {
 
 exports.tweetList = async (req, res, next) => {
     try {
-        // if(!req.user) { //si pas de connexion <=> on affiche tous les tweets
+        if(!req.user) { //si pas de connexion <=> on affiche tous les tweets
             const tweets = await findAllTweets()
-            res.render('tweets/tweet-list', {tweets,isAuthenticated: req.isAuthenticated(), currentUser: req.user})
-    // }
-        // const tweets = await getCurrentUserTweetsWithFollowing(req.user)
-        // res.render('tweets/tweet-list', {
-        //     tweets,
-        //     isAuthenticated: req.isAuthenticated(),
-        //     currentUser: req.user,
-        // })
+            res.render('tweets/tweet-list', {tweets})
+        } else {
+            const tweets = await getCurrentUserTweetsWithFollowing(req.user)
+            res.render('tweets/tweet-list', {
+            tweets,
+            isAuthenticated: req.isAuthenticated(),
+            currentUser: req.user
+        })}
     } catch (error) {
         next(error)
     }
