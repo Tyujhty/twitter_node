@@ -1,6 +1,13 @@
+script(src="/js/search-bar.js") 
+
 .top-bar
     a(href="/")
         img(src="/images/logo.png", alt="Logo Twitter" height='80px')
+    .search-bar
+        form
+            i.fa-solid.fa-magnifying-glass
+            input#search-input(type="text", name="search" placeholder="Looking for someone ?")
+        #search-menu-container
     ul
         if isAuthenticated 
             li

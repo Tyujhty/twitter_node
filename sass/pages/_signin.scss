@@ -1,0 +1,38 @@
+.content-box {
+    width: 100%;
+
+    @include flex;
+
+    .form-box {
+        padding: 2rem;
+        border: 1px solid #ddd;
+        border-radius: 1rem;
+        box-shadow: $box-shadow;
+        margin-top: 2rem;
+
+        h2 {
+            display: inline-block;
+            margin-bottom: 1rem;
+            border-bottom: 3px solid $primary-color;
+        }
+
+        .input-box {
+            width: 100%;
+
+            input {
+                width: 100%;
+                padding: 1rem 1.5rem;
+                border-radius: .5rem;
+                border: 1px solid #ddd;
+                margin: 1rem auto;
+            }
+
+            p {
+                a {
+                    text-decoration: underline;
+                    color: $primary-color;
+                }
+            }
+        }
+    }
+}

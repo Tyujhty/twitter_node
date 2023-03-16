@@ -1,0 +1,79 @@
+.profile {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    box-shadow: $box-shadow;
+    background-color: $primary-color;
+    padding: 1rem 0;
+
+    @include flex($justify: flex-start);
+    @include lg {
+        width: 30%;
+        position: fixed;
+        height: 60%;
+        top: 20%;
+        left: 5%;
+        border-radius: 1rem;
+        border: 1px solid #ddd;
+        background-color: transparent;
+
+        @include flex($direction: column, $justify: flex-start, $align: center);
+    }
+
+    @include xl {
+        width: 20%
+    }
+
+    &-img {
+        width: 20%;
+
+        img {
+            width: 4rem;
+            border-radius: 50%;
+            border: 3px solid #ddd;
+            margin-left: 1rem;
+
+            @include lg {
+                margin-left: 0;
+            }
+        }
+    }
+
+    &-info {
+        @include md {
+            margin-left: -3rem;
+        }
+
+        @include lg {
+            margin: 0;
+        }
+    }
+
+    &-actions {
+        margin-left: 3rem;
+
+        @include md {
+            margin-left: 25rem;
+        }
+
+        @include lg {
+            margin: 2rem 0;
+        }
+    }
+
+    &-data {
+        display: none;
+
+        @include lg {
+            display: block;
+            @include flex($direction: column)
+        }
+
+        &-posts, &-followers, &-following {
+            @include lg {
+                @include flex($direction: column);
+            }
+        }
+    }
+}

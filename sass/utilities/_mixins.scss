@@ -1,26 +1,25 @@
-@mixin flex ($direction: row, $justify: center, $align: center, $wrap: wrap) {
-    align-items: $align;
+@mixin flex($direction: row, $justify: center, $align: center, $wrap: wrap) {
     display: flex;
     flex-direction: $direction;
-    flex-wrap: $wrap;
     justify-content: $justify;
-}
-
-
-@mixin xs {
-    @media (max-width: $screen-xs) {
-        @content;
-    }
+    align-items: $align;
+    flex-wrap: $wrap;
 }
 
 @mixin sm {
-    @media (max-width: $screen-sm) {
+    @media (min-width: $screen-sm) {
         @content;
     }
 }
 
 @mixin md {
-    @media (min-width: $screen-sm) and (max-width: $screen-md) {
+    @media (min-width: $screen-md) {
+        @content;
+    }
+}
+
+@mixin lg {
+    @media (min-width: $screen-lg) {
         @content;
     }
 }

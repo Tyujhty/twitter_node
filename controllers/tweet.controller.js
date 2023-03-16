@@ -14,7 +14,7 @@ exports.createTweet = async (req, res, next) => {
     try {
         const body = req.body
 
-        await createNewTweet({...body, author: req.user._id}) // récupération de l'auteur du tweet
+        await createNewTweet({...body, author: req.user._id})
 
         res.redirect('/')
 

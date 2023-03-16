@@ -1,22 +1,25 @@
 .top-bar {
-    @include flex($justify: space-between);
-
-    background-color: $bg;
+    width: 100%;
     box-shadow: $box-shadow;
-    height: 15vh;
-    padding: 10px 30px;
+
+    @include flex($justify: space-around);
+    a {
+        img {
+            padding: 10px;
+    }
+
+    }
+
+    @include xl {
+        padding: 0 2rem;
+        @include flex($justify: space-between)
+    }
 
     ul {
-        @include flex();
-
-        width: 30%;
-
-        li {
-            margin-left: 10px;
-        }
-
-        @include xs {
-            width: 50%;
+        @include flex;
+        
+        a {
+            margin-left: 1rem;
         }
     }
 }

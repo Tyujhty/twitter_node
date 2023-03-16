@@ -1,19 +1,18 @@
-@import '../base/typographie';
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700&family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+$primary-color: #00ACEE;
+$primary-color-dark: #0078a8;
+$secondary-color: #dfe6e9;
+$secondary-color-dark: #b2bec3;
+$text-color: #333;
+$text-danger: #eb4d4b;
+$bg: #eeeeee;
 
 $font-family: 'Montserrat', sans-serif;
-$primary-color: #00ACEE;
-$primary-color-dark: #01719d;
-$secondary-color: #dfe6e9;
-$secondary-color-dark: #bec2c4;
-$text-color: #333;
-$bg: #eee;
-$text-danger: #c0392b;
 
+$box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
 
-$box-shadow :rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-
-
-$screen-xs: 480px;
-$screen-sm: 768px;
-$screen-md: 979px;
+$screen-sm: 576px;
+$screen-md: 768px;
+$screen-lg: 992px;
 $screen-xl: 1200px;

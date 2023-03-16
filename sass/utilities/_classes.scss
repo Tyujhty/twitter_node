@@ -1,13 +1,26 @@
 ul {
     list-style: none;
-    margin: 0;
 }
 
 a {
     text-decoration: none;
     cursor: pointer;
+    color: $text-color;
+    font-weight: 600;
+
+    &:hover {
+        color: $primary-color;
+    }
 }
 
 .text-danger {
+    margin-top: 10px;
     color: $text-danger;
+}
+
+.fa-regular {
+    &:hover {
+        cursor: pointer;
+        color: $primary-color;
+    }
 }

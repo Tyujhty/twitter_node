@@ -1,54 +1,27 @@
 .tweets-container {
-    @include flex();
-
-    width: 80%;
-
-    @include xs {
-        width: 100%;
-    }
+    width: 100%;
+    @include flex;
 
     .tweets-list {
+        width: 100%;
+        margin-bottom: 6rem;
         @include flex($direction: column);
 
-        margin-bottom: 100px;
-        width: 80%;
+        @include sm {
+            width: 80%;
+        }
 
-        form {
-            border: 1px solid $text-color;
-            border-radius: 5px;
-            margin-top: 2rem;
-            width: 60%;
-            padding: 1rem;
+        @include md {
+            width: 70%;
+        }
 
-            @include xs {
-                width: 100%;
-            }
+        @include lg {
+            width: 50%;
+            margin-left: 20rem;
+        }
 
-            .form-title h4 {
-                color: $text-color;
-            }
-
-            .form-body {
-                width: 100%;
-
-                .form-item {
-                    width: 100%;
-
-                    textarea {
-                        border: none;
-                        width: 100%;
-                        background-color: transparent;
-                        padding: 10px 15px;
-                        text-align: start;
-                        resize: none;
-                        outline: none;
-                    }
-
-                    &:last-child {
-                        text-align: right;
-                    }
-                }
-            }
+        @include xl {
+            width: 30%;
         }
     }
 }

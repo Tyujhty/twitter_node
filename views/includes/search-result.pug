@@ -1,0 +1,8 @@
+.search-menu-result
+    if users && users.length 
+        each user in users
+            a.search-menu-result-user(href=`/user/${user.username}`)
+                img(src=user.avatar, alt="")
+                span= user.username
+    else
+        span no user found

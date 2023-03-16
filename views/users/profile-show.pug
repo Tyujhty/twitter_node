@@ -20,6 +20,10 @@ block content
                 .user-profile-data-following
                     p Following
                     p 5
+            if currentUser
+                .user-profile-delete    
+                        p Delete your profile ?
+                        a(href=`./delete/${user._id}` class="btn btn-primary") Delete profile
     .tweets-user-container
         .tweets-user-list
             if isAuthenticated

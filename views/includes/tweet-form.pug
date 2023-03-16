@@ -1,4 +1,4 @@
-form(class="card" action= tweet ? `/tweet/edit/${tweet._id}` : '/tweet/new' method="post")
+form(class="form-new" action= tweet ? `/tweet/edit/${tweet._id}` : '/tweet/new' method="post")
     .form-title 
         h4= tweet ? "Edit the tweet" : " Add a new tweet"
     .form-body

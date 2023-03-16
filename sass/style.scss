@@ -1,18 +1,20 @@
-@import './utilities/variables';
-@import './utilities/mixins';
-@import './utilities/classes';
+@import 'utilities/variables';
+@import 'utilities/mixins';
+@import 'utilities/classes';
 
-@import './base/reset';
-@import './base/typographie';
+@import 'base/reset';
 
-@import './components/buttons';
-@import './components/tweet_card';
+@import 'layout/header';
+@import 'layout/profile';
+@import 'layout/tweets';
 
-@import './layout/header';
-@import './layout/profil';
-@import './layout/tweets';
+@import 'components/buttons';
+@import 'components/tweet_card';
+@import 'components/tweet_form';
+@import 'components/search-bar';
 
-@import './page/home';
-@import './page/signin';
-@import './page/signup';
-@import './page/user_profile'
+@import 'pages/home';
+@import 'pages/signin';
+@import 'pages/signup';
+@import 'pages/user_profile';
+

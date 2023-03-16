@@ -1,63 +1,59 @@
 .tweet-card {
-    width: 60%;
-    border: 1px solid $text-color;
-    margin-top: 2rem;
-    padding: 1.5rem;
+    width: 100%;
+    padding: 1.5rem 1rem;
+    border-bottom: 1px solid #ddd;
+    @include flex($direction: column, $align: flex-start);
 
-    @include xs {
-        width: 100%;
+    @include sm {
+        border: 1px solid #ddd;
+        border-radius: .5rem;
+        margin: 1rem auto;
     }
 
     &-author {
-
-        @include flex($justify: space-between);
+        width: 100%;
+        border: 1px solid #ddd;
+        padding: .5rem;
+        border-radius: .5rem;
+        @include flex($justify: space-between, $wrap: nowrap);
 
         &-data {
-
+            width: 40%;
             @include flex();
-
             img {
-                width: 2.5rem;
+                width: 3rem;
+                height: 3rem;
                 border-radius: 50%;
-                border: 2px solid $primary-color;
+                border: 3px solid $primary-color;
             }
-    
+
             p {
                 margin-left: 1rem;
-                font-weight: 700;
-            }
-
-            i {
-                margin: 0 0.3rem;
             }
         }
 
-        &-action {
+        &-actions {
+            width: 60%;
+            @include flex($justify: flex-end);
+
             a {
-                color: $text-color;
-                i {
-                    cursor: pointer;
-                }
+                margin-right: 1rem;
             }
         }
-
     }
 
     &-body {
-        padding: 1rem;
+        width: 100%;
+        height: 7rem;
+        padding: 2rem 0;
+        text-align: start;
     }
 
     &-actions {
-        @include flex($justify: space-around);
+        width: 100%;
+        padding-top: 2rem;
+        border-top: 1px solid #ddd;
 
-        border-top: 1px solid $bg;
-        margin-top: 2rem;
-
-        i {
-            cursor: pointer;
-            font-size: 1.5rem;
-            line-height: 1.5rem;
-            margin-top: 1.5rem;
-        }
+        @include flex($justify: space-around)
     }
 }

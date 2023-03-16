@@ -1,7 +1,7 @@
-const { createNewUser, findUserByUsername } = require("../queries/user.queries")
+const { createNewUser, findUserByUsername, findUserByQuerySearch, findUserAndDelete } = require("../queries/user.queries")
 const multer = require('multer')
 const path = require('path') //permet de stocker une image uploadée dans un chemin précis et créer un chemin entre le user <=> avatar
-const { findTweetsFromUserName } = require("../queries/tweet.queries")
+const { findTweetsFromUserName, findTweetAndDelete } = require("../queries/tweet.queries")
 
 const upload = multer({
     storage: multer.diskStorage({
@@ -56,6 +56,30 @@ exports.displayProfile = async (req, res, next) => {
         const tweets = await findTweetsFromUserName(user._id) // je trouve tous les tweet de l'auteur
 
         res.render('users/profile-show', {tweets, user, isAuthenticated: req.isAuthenticated(), currentUser: req.user })
+    } catch (error) {
+        next(error)
+    }
+}
+
+exports.userList = async(req, res, next) => {
+    try {
+        const search = req.query.search
+        const users = await findUserByQuerySearch(search)
+        res.render('includes/search-result', {users})
+    } catch (error) {
+        next(error)
+    }
+}
+
+exports.deleteUser = async(req, res, next) => {
+    try {
+        const usernameId = req.user
+        const tweets = await findTweetsFromUserName(usernameId)
+
+        await findUserAndDelete(usernameId)
+        await findTweetAndDelete(tweets)
+        res.redirect('/')
+        
     } catch (error) {
         next(error)
     }
