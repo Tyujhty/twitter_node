@@ -16,10 +16,10 @@ if isAuthenticated
         .profile-data
             .profile-data-posts
                 p Posts
-                p 5
+                p= tweets.length
             .profile-data-followers
                 p Followers
-                p 5
+                p= currentUser.followers.length
             .profile-data-following
                 p Following
-                p 5
+                p= currentUser.followings.length
