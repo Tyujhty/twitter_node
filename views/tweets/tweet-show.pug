@@ -1,0 +1,14 @@
+extends ../layout.pug 
+
+block content 
+    .content
+        if isAuthenticated
+            .profile-container
+                include  ../includes/profile.pug
+        .tweets-container
+            .tweets-list 
+                if isAuthenticated
+                    include ../includes/tweet-card.pug
+                    include ../includes/comment-form.pug
+                    each comment in comments
+                        include ../includes/comment-card.pug

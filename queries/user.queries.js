@@ -1,4 +1,3 @@
-const { findOne, findById } = require('../database/models/User.model')
 const User = require('../database/models/User.model')
 
 
@@ -56,7 +55,7 @@ exports.addUserToCurrentFollowingList = async (currentUser,userId) => {
 exports.removeUserToCurrentUserFollowingList = async (currentUser,userId) => {
     currentUser.followings = currentUser.followings.filter(objId => objId.toString() !== userId)
     const user= await this.findUserById(userId)
-    user.followers = currentUser.followers.filter(objId => objId.toString() !== userId)
+    user.followers = currentUser.followers.filter(objId => objId.toString() !== currentUser._id)
     user.save()
     return currentUser.save()
 }

@@ -1,7 +1,7 @@
-const router = require('express').Router
+const { newComment } = require('../controllers/comment.controller')
 
-router.get('/', (req,res,next) => {
-    res.end()
-})
+const router = require('express').Router()
+
+router.post('/new/:tweetId', newComment)
 
 module.exports = router

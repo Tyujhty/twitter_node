@@ -4,15 +4,20 @@ const schema = mongoose.Schema
 const tweetSchema = schema({
     content: {
         type: String,
-        maxlenght: [146, 'Le tweet est trop long !'],
-        minlength: [5, 'Le tweet est trop court !'],
-        required: [ true, "Le tweet ne peut être vide"]
+        maxlenght: [146, 'The tweet is too long'],
+        minlength: [5, 'The tweet is too short!'],
+        required: [ true, "The content can't be empty"]
     },
     author: {
         type: schema.Types.ObjectId,
         ref: 'user',
         required: true
-    }
+    }, 
+    comments: {
+        type: [schema.Types.ObjectId],
+        ref: 'comment',
+    },
+    nbLikes: {type: Number, default: 0}
 }, {
     timestamps: true
 })

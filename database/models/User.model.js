@@ -15,9 +15,14 @@ const userSchema = schema({
         default: '/images/default-profile.png' //img par défault à l'inscription
     },
     followings: {type: [schema.Types.ObjectId], ref: 'user'},
-    followers: {type: [schema.Types.ObjectId], ref: 'user'}
+    followers: {type: [schema.Types.ObjectId], ref: 'user'},
+    likedTweets: {type: [schema.Types.ObjectId], ref: 'tweet'}
 }, {
     timestamps: true
+})
+
+userSchema.virtual('fullname').get(function () {
+    return `${this.firstname} ${this.lastname}`
 })
 
 userSchema.statics.hashPassword = async (password) => {

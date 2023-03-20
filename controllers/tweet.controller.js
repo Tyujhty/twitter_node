@@ -5,10 +5,10 @@ const {
     findTweetAndDelete, 
     findTweetById, 
     findTweetAndUpdate,
-    getCurrentUserTweetsWithFollowing
+    getCurrentUserTweetsWithFollowing,
+    likeTweet
     } = require("../queries/tweet.queries")
     
-
 
 exports.createTweet = async (req, res, next) => {
     try {
@@ -58,7 +58,7 @@ exports.deleteTweet = async (req, res, next) => {
     }
 }
 
-exports.displayTweet = async(req, res, next) => {
+exports.editTweet = async(req, res, next) => {
     try {
         const tweetId = req.params.tweetId
         const tweet = await findTweetById(tweetId)
@@ -82,3 +82,33 @@ exports.updateTweet = async(req, res, next) => {
         next(error)
     }
 }
+
+exports.showTweet = async(req, res, next) => {
+    try {
+        const tweetId = req.params.tweetId
+        const tweet = await findTweetById(tweetId)
+        res.render('tweets/tweet-show', {
+            tweet,
+            comments: tweet.comments,
+            isAuthenticated: req.isAuthenticated(), 
+            currentUser: req.user
+        })
+        
+    } catch (error) {
+        next(error)
+    }
+ }
+
+ exports.tweetLike = async(req, res, next) => {
+    try {
+        const tweetId = req.params.tweetId
+        const user = req.user
+        await likeTweet(tweetId, user)
+        const tweets = await findAllTweets()
+        res.render('includes/tweet-list', {tweets, isAuthenticated: req.isAuthenticated(), currentUser: req.user})
+        
+
+    } catch (error) {
+        next(error)
+    }
+ }

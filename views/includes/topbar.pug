@@ -9,12 +9,8 @@ script(src="/js/search-bar.js")
             input#search-input(type="text", name="search" placeholder="Looking for someone ?")
         #search-menu-container
     ul
-        if isAuthenticated 
-            li
-                a(class='btn btn-primary' href='/auth/signout') Log out
-        else
+        if !isAuthenticated 
             li
                 a(href="/user/signup/form" class='btn btn-primary') Sign in
             li
                 a(href="/auth/signin/form" class='btn btn-primary') Log in
-            

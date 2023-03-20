@@ -1,0 +1,9 @@
+.tweet-card
+    .tweet-card-author
+        .tweet-card-author-data
+            img(src=comment.author.avatar, alt="alt")
+            a(href=`/user/${comment.author.username}`)
+                p @#{comment.author.username}
+            p= moment(comment.createAt).locale('en').fromNow()
+        
+    .tweet-card-body= comment.message

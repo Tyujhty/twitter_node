@@ -1,6 +1,7 @@
 extends ../layout.pug
 
 block content 
+    script(src="/js/likeTweet.js") 
     .content
         if isAuthenticated
             .profile-container
@@ -9,7 +10,6 @@ block content
             .tweets-list
                 if isAuthenticated
                     include ../includes/tweet-form.pug
-                if tweets
-                    each tweet in tweets
-                        include ../includes/tweet-card.pug
+                .tweets-list-container
+                    include ../includes/tweet-list.pug
 
