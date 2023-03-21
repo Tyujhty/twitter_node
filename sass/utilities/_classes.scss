@@ -7,6 +7,7 @@ a {
     cursor: pointer;
     color: $text-color;
     font-weight: 600;
+    transition: .9s;
 
     &:hover {
         color: $primary-color;
@@ -18,9 +19,12 @@ a {
     color: $text-danger;
 }
 
-.fa-regular {
+.fa-regular, .fa-solid {
+    transition: .9s;
+    font-size: 1.2rem;
     &:hover {
         cursor: pointer;
         color: $primary-color;
+
     }
 }

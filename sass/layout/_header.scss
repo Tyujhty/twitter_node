@@ -1,15 +1,24 @@
 .top-bar {
-    width: 100%;
-    box-shadow: $box-shadow;
-
     @include flex($justify: space-around);
+    
+    backdrop-filter: blur(10px);
+    top: 0;
+    border: 1px solid $border;
+    height: auto;
+    margin: 0 auto;
+    padding: 0.7rem 0;
+    position: fixed;
+    width: 100%;
+
     a {
         img {
             padding: 10px;
+            height: 40px;
+        }
+        .fa-house {
+            font-size: 1.4rem;
+        }
     }
-
-    }
-
     @include xl {
         padding: 0 2rem;
         @include flex($justify: space-between)
@@ -17,9 +26,5 @@
 
     ul {
         @include flex;
-        
-        a {
-            margin-left: 1rem;
-        }
     }
 }

@@ -1,25 +1,24 @@
 .user-content {
     padding-top: 5rem;
+    
     @include flex();
 
     .user-profile {
         @include flex($direction: column);
-        
         border:1px solid #ddd ;
         padding: 2rem;
         border-radius: 0.5rem;
-        box-shadow: $box-shadow;
-        width: 40%;
+        width: 100%;
 
         &-img {
             width: 100%;
 
             img {
                 margin-top: -6rem;
-                width: 10rem;
-                height: 10rem;
+                width: 6rem;
+                height: 6rem;
                 border-radius: 50%;
-                border: 3px solid $primary-color;
+                border: 3px solid white;
             }
         }
 

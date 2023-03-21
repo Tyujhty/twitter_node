@@ -54,8 +54,8 @@ exports.addUserToCurrentFollowingList = async (currentUser,userId) => {
 
 exports.removeUserToCurrentUserFollowingList = async (currentUser,userId) => {
     currentUser.followings = currentUser.followings.filter(objId => objId.toString() !== userId)
-    const user= await this.findUserById(userId)
-    user.followers = currentUser.followers.filter(objId => objId.toString() !== currentUser._id)
+    const user= await this.findUserById(userId.toString())
+    user.followers = currentUser.followers.filter(objId => objId.toString() !== currentUser._id.toString())
     user.save()
     return currentUser.save()
 }

@@ -6,15 +6,19 @@ const {
     findTweetById, 
     findTweetAndUpdate,
     getCurrentUserTweetsWithFollowing,
-    likeTweet
+    likeTweet,
+    retweet
     } = require("../queries/tweet.queries")
     
 
 exports.createTweet = async (req, res, next) => {
     try {
         const body = req.body
-
-        await createNewTweet({...body, author: req.user._id})
+    
+        await createNewTweet({
+            ...body, 
+            author: req.user._id, 
+            retweeted: {status: false, initialAuthor: req.user._id}})
 
         res.redirect('/')
 
@@ -108,6 +112,17 @@ exports.showTweet = async(req, res, next) => {
         res.render('includes/tweet-list', {tweets, isAuthenticated: req.isAuthenticated(), currentUser: req.user})
         
 
+    } catch (error) {
+        next(error)
+    }
+ }
+
+ exports.shareTweet = async(req, res, next) => {
+    try {
+        const tweetId = req.params.tweetId
+        await retweet(tweetId, req.user._id)
+        res.redirect('/')
+        
     } catch (error) {
         next(error)
     }

@@ -9,6 +9,12 @@ exports.findAllTweets = () => {
     return Tweet
         .find({})
         .populate('author') //populate : pour chaque tweet on récupère les infos de l'auteur
+        .populate({
+            path: 'retweeted',
+            populate: {
+                path: 'initialAuthor'
+            }
+        })
         .sort('-createAt')
         .exec() 
 }
@@ -29,6 +35,12 @@ exports.findTweetById = (tweetId) => {
                 path: 'author'
             }
         })
+        .populate({
+            path: 'retweeted',
+            populate: {
+                path: 'initialAuthor'
+            }
+        })
         .sort('-createdAt')
         .exec()
 }
@@ -43,6 +55,12 @@ exports.getCurrentUserTweetsWithFollowing = (user) => {
     return Tweet
         .find({author: {$in: [...user.followings, user._id]}})
         .populate('author')
+        .populate({
+            path: 'retweeted',
+            populate: {
+                path: 'initialAuthor'
+            }
+        })
         .sort('-createdAt')
         .exec() //destructuring data 
 }
@@ -51,6 +69,12 @@ exports.findTweetsFromUserName = (authorId) => {
     return Tweet
         .find( {author: authorId} )
         .populate('author')
+        .populate({
+            path: 'retweeted',
+            populate: {
+                path: 'initialAuthor'
+            }
+        })
         .sort('-createdAt')
         .exec()
 }
@@ -67,4 +91,17 @@ exports.likeTweet = async (tweetId, user) => {
     }
     user.save()
     return tweet.save()
+}
+
+exports.retweet = async (tweetId, userId) => {
+    const tweet = await Tweet.findById(tweetId)
+    const sharedTweet = new Tweet({
+        content: tweet.content,
+        author: userId,
+        retweeted: {
+            status: true,
+            initialAuthor: tweet.author._id
+        }
+    })
+    return sharedTweet.save()
 }

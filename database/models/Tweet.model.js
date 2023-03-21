@@ -17,7 +17,15 @@ const tweetSchema = schema({
         type: [schema.Types.ObjectId],
         ref: 'comment',
     },
-    nbLikes: {type: Number, default: 0}
+    nbLikes: {type: Number, default: 0},
+    retweeted: {
+        status: {type: Boolean, default: false},
+        initialAuthor: {
+            type: schema.Types.ObjectId, 
+            ref: 'user', 
+            required: true
+        }
+    }
 }, {
     timestamps: true
 })
