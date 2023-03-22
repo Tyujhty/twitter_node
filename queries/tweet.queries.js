@@ -9,12 +9,13 @@ exports.findAllTweets = () => {
     return Tweet
         .find({})
         .populate('author') //populate : pour chaque tweet on récupère les infos de l'auteur
-        .populate({
-            path: 'retweeted',
-            populate: {
-                path: 'initialAuthor'
-            }
-        })
+        // .populate({
+        //     path: 'retweeted',
+        //     populate: {
+        //         path: 'initialAuthor'
+        //     }
+        // })
+        .populate('retweeted.initialAuthor')
         .sort('-createAt')
         .exec() 
 }

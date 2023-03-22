@@ -23,9 +23,9 @@ a:hover {
   transition: 0.9s;
   font-size: 1.2rem;
 }
-.fa-regular:hover, .fa-solid:hover {
-  cursor: pointer;
-  color: #00ACEE;
+
+.strong {
+  font-weight: 600;
 }
 
 * {
@@ -44,11 +44,11 @@ a:hover {
   backdrop-filter: blur(10px);
   top: 0;
   border: 1px solid #cecbcb;
-  height: auto;
+  height: 4rem;
   margin: 0 auto;
-  padding: 0.7rem 0;
   position: fixed;
   width: 100%;
+  z-index: 1;
 }
 .top-bar a img {
   padding: 10px;
@@ -188,11 +188,6 @@ a:hover {
   align-items: center;
   flex-wrap: wrap;
 }
-@media (min-width: 576px) {
-  .tweets-container .tweets-list {
-    width: 80%;
-  }
-}
 @media (min-width: 768px) {
   .tweets-container .tweets-list {
     width: 70%;
@@ -211,34 +206,37 @@ a:hover {
 }
 
 .btn {
-  border-radius: 3px;
+  border-radius: 25px;
   border: 1px solid white;
   cursor: pointer;
   padding: 10px 15px;
   color: white;
+  font-size: 0.9rem;
 }
 .btn-primary {
   background-color: #00ACEE;
 }
 .btn-primary:hover {
   background-color: #0078a8;
+  color: white;
 }
 .btn-secondary {
-  background-color: #0078a8;
+  background-color: #cb2055;
 }
 .btn-secondary:hover {
-  background-color: #00ACEE;
+  background-color: #ce4a73;
+  color: black;
 }
 
 .tweet-card {
   width: 100%;
-  padding: 1.5rem 1rem;
+  padding: 0.6rem;
   border-bottom: 1px solid #ddd;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: flex-start;
   align-items: flex-start;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 @media (min-width: 576px) {
   .tweet-card {
@@ -247,33 +245,50 @@ a:hover {
     margin: 1rem auto;
   }
 }
+.tweet-card .retweet {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #878787;
+}
+.tweet-card .retweet i {
+  font-size: 0.8rem;
+  margin-right: 1rem;
+  color: #878787;
+}
+.tweet-card-avatar img {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  border: 1px solid #878787;
+}
 .tweet-card-author {
   width: 100%;
-  border: 1px solid #ddd;
-  padding: 0.5rem;
-  border-radius: 0.5rem;
+  padding: 0 0.3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+}
+.tweet-card-author-data {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: nowrap;
-}
-.tweet-card-author-data {
-  width: 40%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
   flex-wrap: wrap;
+  width: 100%;
+  margin-top: 0.3rem;
+  font-size: 0.9rem;
 }
-.tweet-card-author-data img {
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
-  border: 3px solid #00ACEE;
+.tweet-card-author-data .medium {
+  font-weight: 500;
+  color: #878787;
 }
-.tweet-card-author-data p {
-  margin-left: 1rem;
+.tweet-card-author-data .overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100px;
 }
 .tweet-card-author-actions {
   width: 60%;
@@ -288,19 +303,29 @@ a:hover {
 }
 .tweet-card-body {
   width: 100%;
-  height: 7rem;
-  padding: 2rem 0;
+  min-height: 3rem;
+  height: auto;
+  padding: 0.5rem 0;
   text-align: start;
 }
 .tweet-card-actions {
   width: 100%;
-  padding-top: 2rem;
-  border-top: 1px solid #ddd;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
+}
+.tweet-card-actions a i {
+  margin-right: 10px;
+  padding: 5px;
+  border-radius: 25px;
+}
+.tweet-card-actions a i:hover {
+  background-color: #dfe6e9;
+}
+.tweet-card-actions i span {
+  margin-left: 10px;
 }
 
 .form-new {
@@ -372,17 +397,15 @@ a:hover {
   width: 100%;
 }
 .search-bar #search-menu-container {
-  background-color: white;
+  background-color: rgb(212, 212, 212);
   position: absolute;
   left: 50%;
   translate: -50%;
-  top: 9rem;
-  border: 1px solid #ddd;
-  border-radius: 3px;
+  top: 2rem;
   z-index: 2;
   overflow-y: scroll;
-  max-height: 400px;
-  min-width: 280px;
+  height: 100vh;
+  width: 182%;
 }
 .search-bar #search-menu-container .search-menu-result {
   display: flex;
@@ -467,8 +490,17 @@ section .content-box .form-box .input-box input {
   }
 }
 
+.user-bg-top {
+  max-height: 12rem;
+  margin-top: 4rem;
+}
+.user-bg-top img {
+  object-fit: cover;
+  max-height: 12rem;
+  width: 100%;
+}
+
 .user-content {
-  padding-top: 5rem;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -482,15 +514,14 @@ section .content-box .form-box .input-box input {
   align-items: center;
   flex-wrap: wrap;
   border: 1px solid #ddd;
-  padding: 2rem;
-  border-radius: 0.5rem;
+  padding: 1rem;
   width: 100%;
 }
 .user-content .user-profile-img {
   width: 100%;
 }
 .user-content .user-profile-img img {
-  margin-top: -6rem;
+  margin-top: -4.1rem;
   width: 6rem;
   height: 6rem;
   border-radius: 50%;
@@ -498,9 +529,9 @@ section .content-box .form-box .input-box input {
 }
 .user-content .user-profile-infos {
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-end;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
   flex-wrap: wrap;
   height: 10%;
   width: 100%;
@@ -510,28 +541,51 @@ section .content-box .form-box .input-box input {
   margin-right: 2rem;
 }
 .user-content .user-profile-infos p {
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
-.user-content .user-profile-actions {
+.user-content .user-profile-date {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+  width: 100%;
+}
+.user-content .user-profile-date p {
+  margin-left: 5px;
+}
+.user-content .user-profile-actions, .user-content .user-profile-delete a {
+  position: absolute;
+  right: 0.8rem;
+  top: 17.5rem;
+}
+.user-content .user-profile-data, .user-content .user-profile-posts {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
   width: 100%;
   margin-top: 1rem;
 }
-.user-content .user-profile-data {
+.user-content .user-profile-data p, .user-content .user-profile-data .fa-solid, .user-content .user-profile-posts p, .user-content .user-profile-posts .fa-solid {
+  margin-right: 5px;
+}
+.user-content .user-profile-data .fa-solid, .user-content .user-profile-posts .fa-solid {
+  font-size: 0.8rem;
+}
+.user-content .user-profile-data-followers, .user-content .user-profile-data-following, .user-content .user-profile-posts-followers, .user-content .user-profile-posts-following {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  font-size: 1.2rem;
-  width: 100%;
-  margin-top: 2rem;
+  margin-right: 10px;
 }
-.user-content .user-profile-data-posts, .user-content .user-profile-data-followers, .user-content .user-profile-data-following {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  flex-wrap: wrap;
+.user-content .user-profile-data-followers p, .user-content .user-profile-data-following p, .user-content .user-profile-posts-followers p, .user-content .user-profile-posts-following p {
+  margin-right: 5px !important;
 }
 
 .tweets-user-container {
@@ -548,7 +602,6 @@ section .content-box .form-box .input-box input {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  width: 80%;
 }
 
 /*# sourceMappingURL=style.css.map */

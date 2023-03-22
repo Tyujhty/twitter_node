@@ -4,11 +4,11 @@
     backdrop-filter: blur(10px);
     top: 0;
     border: 1px solid $border;
-    height: auto;
+    height: 4rem;
     margin: 0 auto;
-    padding: 0.7rem 0;
     position: fixed;
     width: 100%;
+    z-index: 1;
 
     a {
         img {

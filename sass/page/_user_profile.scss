@@ -1,20 +1,28 @@
-.user-content {
-    padding-top: 5rem;
-    
+.user-bg-top {
+    max-height: 12rem;
+    margin-top: 4rem;
+    img {
+        object-fit: cover;
+        max-height: 12rem;
+        width: 100%;
+        
+    }
+}
+
+.user-content {    
     @include flex();
 
     .user-profile {
         @include flex($direction: column);
         border:1px solid #ddd ;
-        padding: 2rem;
-        border-radius: 0.5rem;
+        padding: 1rem;
         width: 100%;
 
         &-img {
             width: 100%;
 
             img {
-                margin-top: -6rem;
+                margin-top: -4.1rem;
                 width: 6rem;
                 height: 6rem;
                 border-radius: 50%;
@@ -23,7 +31,7 @@
         }
 
         &-infos {
-            @include flex($justify: flex-start, $align: flex-end);
+            @include flex($align: flex-start, $direction:column);
 
             height: 10%;
             width: 100%;
@@ -34,23 +42,47 @@
             }
 
             p {
-                font-size: 1.5rem;
+                font-size: 1rem;
+            }
+        }
+        &-date {
+            @include flex($justify: flex-start);
+            margin-top: 1rem;
+            width: 100%;
+
+            p {
+                margin-left: 5px;
             }
         }
 
-        &-actions {
-            width: 100%;
-            margin-top: 1rem;
+        &-actions, &-delete a {
+            position: absolute;
+            right: 0.8rem;
+            top: 17.5rem;
         }
 
-        &-data {
-            @include flex($justify: space-around);
-            font-size: 1.2rem;
+        &-data, &-posts {
+            @include flex($justify: flex-start);
+            font-size: 0.9rem;
             width: 100%;
-            margin-top: 2rem;
+            margin-top: 1rem;
+            
+            p, .fa-solid {
+                margin-right: 5px;
+            }
 
-            &-posts, &-followers, &-following {
-                @include flex($direction:column, $justify: space-around );
+            .fa-solid {
+                font-size: 0.8rem;
+            }
+
+            &-followers, &-following {
+                @include flex();
+                
+                margin-right: 10px;
+                
+                p {
+                    margin-right: 5px!important;
+                }
             }
         }    
     }
@@ -63,6 +95,5 @@
 
     .tweets-user-list {
         @include flex();
-        width: 80%;
     }
 }

@@ -2,34 +2,41 @@ extends ../layout.pug
 
 
 block content
-    include ../includes/topbar.pug  
+    include ../includes/topbar.pug
+    .user-bg-top
+        img(src='/images/default-wall.jpg')
     .user-content
         .user-profile
             .user-profile-img
                 img#user-profile-image(src=user.avatar, alt="User avatar image")
-            .user-profile-infos
-                h3 @#{user.username}
-                p #{user.firstname} #{user.lastname}
             if currentUser._id.toString() != user._id.toString()
                 .user-profile-actions
                     if currentUser.followings.includes(user._id.toString())
-                        a(href=`/user/unfollow/${user._id}` class="btn btn-primary") unfollow
+                        a(href=`/user/unfollow/${user._id}` class="btn btn-secondary") Unfollow
                     else
-                        a(href=`/user/follow/${user._id}` class="btn btn-primary") Follow
-            .user-profile-data
-                .user-profile-data-posts
-                    p Posts
-                    p= tweets.length
-                .user-profile-data-followers
-                    p Followers
-                    p= user.followers.length
-                .user-profile-data-following
-                    p Following
-                    p= user.followings.length
+                        a(href=`/user/follow/${user._id}` class="btn btn-primary") Following
             if currentUser
-                .user-profile-delete    
-                        p Delete your profile ?
-                        a(href=`./delete/${user._id}` class="btn btn-primary") Delete profile
+                .user-profile-delete
+                    if currentUser._id.toString() === user._id.toString()
+                        a(href=`./delete/${user._id}` class="btn btn-secondary") Delete profile            
+            .user-profile-infos
+                h3 #{user.firstname} #{user.lastname}
+                p @#{user.username}
+            .user-profile-date    
+                .fa-regular.fa-calendar-days
+                p Joined #{currentUser.createdAt.toLocaleString('en', {month: 'long'})} #{currentUser.createdAt.getFullYear()}
+            
+            .user-profile-data
+                .user-profile-data-following
+                    p(class='strong')= user.followings.length
+                    p Following
+                .user-profile-data-followers
+                    p(class='strong')= user.followers.length
+                    p Followers
+            .user-profile-posts
+                .fa-solid.fa-pen
+                p(class='strong')= tweets.length
+                p Posts
     .tweets-user-container
         .tweets-user-list
             if isAuthenticated

@@ -1,23 +1,26 @@
 .btn {
-    border-radius: 3px;
+    border-radius: 25px;
     border: 1px solid white;
     cursor: pointer;
     padding: 10px 15px;
     color: white;
+    font-size: .9rem;
 
     &-primary {
         background-color: $primary-color;
 
         &:hover {
             background-color: $primary-color-dark;
+            color: white;
         }
     }
 
     &-secondary {
-        background-color: $primary-color-dark;
+        background-color: $danger-color;
 
         &:hover {
-            background-color: $primary-color;
+            background-color: $danger-color-lighter;
+            color: black;
         }
     }
 }

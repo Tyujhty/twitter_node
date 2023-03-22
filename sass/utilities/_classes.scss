@@ -22,9 +22,8 @@ a {
 .fa-regular, .fa-solid {
     transition: .9s;
     font-size: 1.2rem;
-    &:hover {
-        cursor: pointer;
-        color: $primary-color;
+}
 
-    }
+.strong {
+    font-weight: 600;
 }

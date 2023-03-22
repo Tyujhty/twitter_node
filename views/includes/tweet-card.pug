@@ -1,39 +1,43 @@
 .tweet-card
-    if tweet.retweeted.status 
-        if isAuthenticated && tweet.author._id.toString() === currentUser._id.toString()
-            p 
-                i.fa-solid.fa.retweet 
-                | You have retweeted :
-        else
-            p 
-                i.fa-solid.fa.retweet 
-                | #{tweet.author.fullname} has retweeted
+    .tweet-card-avatar
+        if tweet.retweeted.status 
+            img(src= tweet.retweeted.initialAuthor.avatar, alt="alt")
+        else 
+            img(src=tweet.author.avatar, alt="alt")
+
     .tweet-card-author
+        if tweet.retweeted.status 
+            if isAuthenticated && tweet.author._id.toString() === currentUser._id.toString()    
+                p(class='retweet') 
+                    i.fa-solid.fa-retweet 
+                    |You have retweeted :
+            else
+                p(class='retweet') 
+                    i.fa-solid.fa-retweet 
+                    |#{tweet.author.fullname} has retweeted
         .tweet-card-author-data
             if tweet.retweeted.status
-                img(src= tweet.retweeted.initialAuthor.avatar, alt="alt")
-                a(href=`/user/${tweet.retweeted.initialAuthor.username}`)
+                p(class='strong overflow') #{tweet.retweeted.initialAuthor.fullname}
+                a(class='overflow' href=`/user/${tweet.retweeted.initialAuthor.username}` class='medium')
                     p @#{tweet.retweeted.initialAuthor.username}
-                p= moment(tweet.createdAt).locale('en').fromNow()
+                p(class='medium overflow')= moment(tweet.createdAt).locale('en').fromNow()
             else 
-                img(src=tweet.author.avatar, alt="alt")
-                a(href=`/user/${tweet.author.username}`)
+                p(class='strong overflow') #{tweet.author.fullname}                
+                a(class='overflow' href=`/user/${tweet.author.username}` class='medium')
                     p @#{tweet.author.username}
-                p= moment(tweet.createdAt).locale('en').fromNow()
-        if currentUser
-            if tweet.author._id.toString() == currentUser._id.toString()
-                .tweet-card-author-data
+                p(class='medium overflow')= moment(tweet.createdAt).locale('en').fromNow()
+        .tweet-card-body= tweet.content
+        .tweet-card-actions
+            a(href= isAuthenticated ? `/tweet/${tweet._id}` : '/auth/signin/form')
+                i.fa-comment(class= tweet.comments.length > 0 ? 'fa-solid' : 'fa-regular')
+                span= tweet.comments.length
+            i.fa-heart(class= tweet.nbLikes > 0 ? 'fa-solid' : 'fa-regular' tweetid = tweet._id authenticated= isAuthenticated ? 'yes' : 'no')
+                span= tweet.nbLikes
+            a(href=`/tweet/share/${tweet._id}`)
+                i.fa-regular.fa-share-from-square
+            if currentUser
+                if tweet.author._id.toString() == currentUser._id.toString()
                     a(href=`/tweet/edit/${tweet._id}`)
                         i.fa-regular.fa-pen-to-square
                     a(href=`/tweet/delete/${tweet._id}`)
                         i.fa-regular.fa-trash-can
-        
-    .tweet-card-body= tweet.content
-    .tweet-card-actions
-        a(href= isAuthenticated ? `/tweet/${tweet._id}` : '/auth/signin/form')
-            i.fa-comment(class= tweet.comments.length > 0 ? 'fa-solid' : 'fa-regular')
-            span= tweet.comments.length
-        i.fa-heart(class= tweet.nbLikes > 0 ? 'fa-solid' : 'fa-regular' tweetid = tweet._id authenticated= isAuthenticated ? 'yes' : 'no')
-            span= tweet.nbLikes
-        a(href=`/tweet/share/${tweet._id}`)
-            i.fa-regular.fa-share-from-square 

@@ -7,9 +7,6 @@
         margin-bottom: 6rem;
         @include flex($direction: column);
 
-        @include sm {
-            width: 80%;
-        }
 
         @include md {
             width: 70%;
