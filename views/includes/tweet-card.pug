@@ -31,7 +31,8 @@
             a(href= isAuthenticated ? `/tweet/${tweet._id}` : '/auth/signin/form')
                 i.fa-comment(class= tweet.comments.length > 0 ? 'fa-solid' : 'fa-regular')
                 span= tweet.comments.length
-            i.fa-heart(class= tweet.nbLikes > 0 ? 'fa-solid' : 'fa-regular' tweetid = tweet._id authenticated= isAuthenticated ? 'yes' : 'no')
+            .tweet-like
+                i.fa-heart(class= tweet.nbLikes > 0 ? 'fa-solid' : 'fa-regular' tweetid = tweet._id )
                 span= tweet.nbLikes
             a(href=`/tweet/share/${tweet._id}`)
                 i.fa-regular.fa-share-from-square

@@ -7,7 +7,6 @@ script(src="/js/search-bar.js")
         form(class='search-form')
             i.fa-solid.fa-magnifying-glass
             input#search-input(type="text", name="search" placeholder="Looking for someone ?")
-        #search-menu-container
     ul
         if !isAuthenticated 
             li
@@ -17,4 +16,6 @@ script(src="/js/search-bar.js")
         else
             li
                 a(href="/auth/signout")
-                    i.fa-solid.fa-arrow-right-from-bracket
+                    i.fa-solid.fa-arrow-right-from-bracket    
+#search-menu-container
+
